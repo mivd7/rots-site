@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 
 export default ({ data }) => {
   console.log(data)
-  const posts = data.allWordpressPost.edges;
+  const pages = data.allWordpressPage.edges;
   
   return (
     <Layout>
@@ -17,10 +17,10 @@ export default ({ data }) => {
             border-bottom: 1px solid;
           `}
         >
-          Amazing Rots Writing Things
+          Amazing Rots Doing Things
         </h1>
-        <h4>{data.allWordpressPost.totalCount} Posts</h4>
-        {posts.map(({ node }) => (
+        <h4>{data.allWordpressPage.totalCount} Pages</h4>
+        {pages.map(({ node }) => (
           <div key={node.id}>
             <h3
               css={css`
@@ -46,13 +46,14 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allWordpressPost {
+    allWordpressPage {
       edges {
         node {
-          date
-          excerpt
+          id
           title
+          excerpt
           slug
+          date(formatString: "DD MMMM YYYY")
         }
       }
     }
