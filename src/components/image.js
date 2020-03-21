@@ -14,8 +14,12 @@ const Image = props => (
               relativePath
               name
               childImageSharp {
-                fluid(maxWidth: 600) {
+                fluid(maxWidth: 5000, maxHeight: 4000) {
                   ...GatsbyImageSharpFluid
+                }
+                original {
+                  height
+                  width
                 }
               }
             }
@@ -25,15 +29,22 @@ const Image = props => (
     `}
     render={data => {
       const image = data.images.edges.find(n => {
-        console.log(props.source)
+
         return n.node.relativePath.includes(props.source);
       });
       if (!image) {
         return null;
       }
-
-      //const imageSizes = image.node.childImageSharp.sizes; sizes={imageSizes}
-      return <Img alt={props.alt} fluid={image.node.childImageSharp.fluid} />;
+      console.log(image)
+      // const imageStyles = {width: image.node.childImageSharp.original.width, height: image.node.originalSharp.height} - imgStyle={imageStyles}
+      return (props.alt.includes('bg') ? 
+        <Img alt={props.alt} 
+             fluid={image.node.childImageSharp.fluid} 
+             className={`bg ${image.node.name}`} 
+             /> : 
+        <Img alt={props.alt}
+             fluid={image.node.childImageSharp.fluid} 
+             className={`logo ${image.node.name}`}/>)
     }}
   />
 );
