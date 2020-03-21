@@ -2,36 +2,36 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
-import Image from '../components/Image';
-
+import Image from '../components/image';
 export default ({data}) => {
-  const avatars = data.allImageSharp.edges
+  const logos = data.images.nodes
+  console.log(logos)
   return (
     <Layout>
-      <SEO title="Welcome to Rots" />
-      <h1>Welcome! Good to have you here</h1>
-      {avatars.map(({node})=> (
-        <div key={node.id}>
-          <p>{node.originalName}</p>
-          <Image alt="Gatsby in Space" source={node.fixed.originalName} />        
-        </div>)
+      <SEO title="Landing on the Rock" />
+      <h1 className="lp-header">Fasten your seat belts, we're landing on the rock</h1>
+      {logos.map(logo => 
+        ( <div onClick={() => window.alert(`you clicked ${logo.childImageSharp.id}`)}>
+            <Image alt={`logo-${logos.indexOf(logo)}`} source={logo.relativePath}/>
+          </div>
+        )
       )}
-    </Layout>
+   </Layout>
   )
 }
 
 export const query = graphql`
-  query {
-    allImageSharp {
-      totalCount
-      edges {
-          node {
-            fixed {
-              originalName
-            }
-            id
+  {
+    images: allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+      nodes {
+        relativePath
+        childImageSharp {
+          id
+          fluid(maxWidth: 400) {
+            src
           }
         }
+      }
     }
   }
 `
