@@ -14,7 +14,7 @@ const Image = props => (
               relativePath
               name
               childImageSharp {
-                fluid(maxWidth: 5000, maxHeight: 4000) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
                 original {
@@ -37,14 +37,10 @@ const Image = props => (
       }
       console.log(image)
       // const imageStyles = {width: image.node.childImageSharp.original.width, height: image.node.originalSharp.height} - imgStyle={imageStyles}
-      return (props.alt.includes('bg') ? 
-        <Img alt={props.alt} 
-             fluid={image.node.childImageSharp.fluid} 
-             className={`bg ${image.node.name}`} 
-             /> : 
+      return (
         <Img alt={props.alt}
              fluid={image.node.childImageSharp.fluid} 
-             className={`logo ${image.node.name}`}/>)
+             style={{maxWidth: 250, maxHeight: 250}} />)
     }}
   />
 );
