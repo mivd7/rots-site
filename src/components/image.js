@@ -38,9 +38,10 @@ const Image = props => (
       console.log(image)
       // const imageStyles = {width: image.node.childImageSharp.original.width, height: image.node.originalSharp.height} - imgStyle={imageStyles}
       return (
-        <Img alt={props.alt}
-             fluid={image.node.childImageSharp.fluid} 
-             style={{maxWidth: 250, maxHeight: 250}} />)
+          <Img alt={props.alt}
+              fluid={image.node.childImageSharp.fluid} 
+              style={{maxWidth: 250, maxHeight: 250}} 
+              className={`logo-animated logo-${image.node.name}`}/>)
     }}
   />
 );

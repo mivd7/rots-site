@@ -9,11 +9,12 @@ export default ({data}) => {
   return (
     <Layout>
       <SEO title="Landing on the Rock" />
-      <h1>Fasten your seat belts, we're landing on the rock</h1>
+      <h1 className="lp-header">Fasten your seat belts, we're landing on the rock</h1>
       {logos.map(logo => 
-            <div key={logo.id}>
-              <Image alt={`logo-${logo.id}`} source={logo.relativePath}/>
-            </div>
+        ( <div onClick={() => window.alert(`you clicked ${logo.childImageSharp.id}`)}>
+            <Image alt={`logo-${logos.indexOf(logo)}`} source={logo.relativePath}/>
+          </div>
+        )
       )}
    </Layout>
   )

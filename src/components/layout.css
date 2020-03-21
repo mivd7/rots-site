@@ -615,8 +615,40 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+.lp-header {
+  color: white;
+}
+
+.logo-logo-1 {
+  display: block;
+  text-align: center;
+  animation: randomMovement 5s infinite;
+  animation-direction: alternate;
+}
+
+.logo-logo-2 {
+  animation: randomMovement2 5s infinite;
+  animation-direction: alternate;
+}
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
   }
+}
+
+@keyframes randomMovement {
+  0%   {left: 100%; top: 80vh;}
+  25%  {left: 80%; top: 0px;}
+  50%  {left: 80%; top: 50vh;}
+  75%  {left: 0px; top: 50vh;}
+  100% {left: 0px; top: 0px;}
+}
+
+@keyframes randomMovement2 {
+  0%   {left: 33%; bottom: 50%;}
+  25%  {left: 40%; bottom: 0px;}
+  50%  {left: 40%; bottom: 120%;}
+  75%  {left: 0px; bottom: 110%;}
+  100% {left: 0px; bottom: 0px;}
 }
