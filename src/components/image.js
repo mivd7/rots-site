@@ -41,7 +41,7 @@ const Image = props => (
           <Img alt={props.alt}
               fluid={image.node.childImageSharp.fluid} 
               style={{maxWidth: 250, maxHeight: 250}} 
-              className={`logo-animated logo-${image.node.name}`}/>)
+              className={`logo logo-animated logo-${image.node.name}`}/>)
     }}
   />
 );

@@ -619,6 +619,9 @@ pre tt:after {
 .lp-header {
   color: white;
 }
+.logo .logo-animated img {
+  padding: 200px;
+}
 
 .logo-logo-1 {
   display: block;
@@ -630,6 +633,17 @@ pre tt:after {
 .logo-logo-2 {
   animation: randomMovement2 5s infinite;
   animation-direction: alternate;
+}
+
+.dialog-container {
+  background-color: white;
+  display: block;
+  text-align: center;
+  padding: 20px;
+  border: 5px solid lightgrey;
+  width: 50%;
+  height: 50%;
+  border-radius: 10%;
 }
 @media only screen and (max-width: 480px) {
   html {
