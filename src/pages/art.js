@@ -6,7 +6,7 @@ import SEO from "../components/seo"
   export default () => {
     return (
       <Layout>
-        <SEO title="Landing on the Rock" />
+        <SEO title="Art Rock" />
         <h1>This is art</h1>
         <Link to={`/`}>Back to the homepage</Link>
      </Layout>

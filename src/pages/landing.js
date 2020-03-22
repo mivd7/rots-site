@@ -1,11 +1,9 @@
-import React, {
-  useRef, 
-  // useState
-} from "react"
+import React, { useRef } from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, Link } from "gatsby"
 import Image from '../components/image';
+
 export default ({data}) => {
   const activeLogo = useRef();
   // const [isActive, setIsActive] = useState(false)
@@ -17,14 +15,14 @@ export default ({data}) => {
     <Layout>
       <SEO title="Landing on the Rock" />
       {logos.map(logo => 
-        ( <div onClick={focusLogo}>
-            <Link to={`/art`}>
+        ( <div key={logo.id}>
+            <Link onClick={focusLogo} to={`/art`}>
               <Image ref={activeLogo} alt={`logo-${logos.indexOf(logo)}`} source={logo.relativePath}/>
             </Link>
           </div>
         )
       )}
-   </Layout>
+    </Layout>
   )
 }
 
